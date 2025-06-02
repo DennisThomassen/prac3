@@ -11,10 +11,6 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
-                 <div class="p-6 text-gray-900">
-                    {{ __(  "click here to show the rest of our site!") }}
-                    <a href="/teams">teampage</a>
-                </div>
             </div>
         </div>
     </div>
