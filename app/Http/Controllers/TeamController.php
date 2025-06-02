@@ -28,7 +28,7 @@ class TeamController extends Controller
         ]);
         $team = new Team;
         $team->name = $request->input('name');
-        $team->player_name = $request->input('player_count');
+        $team->player_count = $request->input('player_count');
         $team->coach_name = $request->input('coach_name');
 
         $team->save();
