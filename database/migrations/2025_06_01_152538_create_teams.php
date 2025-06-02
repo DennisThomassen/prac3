@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->integer('player_count');
             $table->string('coach_name');
+             $table->foreignId('tournament_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

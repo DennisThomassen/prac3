@@ -7,20 +7,24 @@ use Illuminate\Http\Request;
 
 class TournamentController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $tournaments = Tournament::all();
         return view('tournaments.index', compact('tournaments'));
     }
-    public function edit($id){
+    public function edit($id)
+    {
         $tournament = Tournament::findOrFail($id);
         return view('tournaments.edit', compact('tournament'));
     }
-    public function create(){
+    public function create()
+    {
         $tournaments = Tournament::all();
         return view('tournaments.create', compact('tournaments'));
     }
-    public function store(Request $request){
-        $this -> validate($request, [
+    public function store(Request $request)
+    {
+        $this->validate($request, [
             'name' => 'required|string',
             'rounds' => 'required|integer',
             'teams_competing' => 'required|string',
@@ -38,8 +42,9 @@ class TournamentController extends Controller
     }
 
 
-    public function update(Request $request, string $id){
-        $tournament = Team::findOrFail($id);
+    public function update(Request $request, string $id)
+    {
+        $tournament = Tournament::findOrFail($id);
         $tournament->name = $request->get('name');
         $tournament->rounds = $request->get('rounds');
         $tournament->teams_competing = $request->get('teams_competing');
@@ -49,12 +54,35 @@ class TournamentController extends Controller
 
         return redirect()->route('tournaments.index');
     }
-    public function destroy(string $id){
+    public function destroy(string $id)
+    {
         Tournament::findOrFail($id)->delete();
         return redirect()->route('tournaments.index');
     }
-    public function show(string $id){
-        $tournament = Tournament::findOrFail($id);
-        return view('tournaments.show', compact('tournament'));
+   public function show($id)
+{
+    $tournament = Tournament::findOrFail($id);
+
+    $teams = $tournament->teams; // Dit moet een relatie zijn in je Tournament model!
+
+    $rounds = [];
+    $currentRound = $teams->map(function ($team) {
+        return ['team_name' => $team->name];
+    });
+
+    while ($currentRound->count() > 1) {
+        $rounds[] = $currentRound;
+        $nextRound = collect();
+
+        for ($i = 0; $i < $currentRound->count(); $i += 2) {
+            $nextRound->push(['team_name' => 'Winner of ' . $currentRound[$i]['team_name'] . ' vs ' . $currentRound[$i + 1]['team_name']]);
+        }
+
+        $currentRound = $nextRound;
     }
+
+    $rounds[] = $currentRound;
+
+    return view('tournaments.show', compact('tournament', 'rounds'));
+}
 }
