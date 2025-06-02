@@ -15,9 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [TeamController::class, 'index'])->name('teams.index');
+Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
 
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
