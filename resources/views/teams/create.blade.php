@@ -4,7 +4,10 @@
 <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-white shadow rounded-lg p-6">
         <h2 class="text-2xl font-bold mb-6 text-gray-800">Team Toevoegen</h2>
+        <nav class="flex justify-center gap-4 py-6">
 
+
+        </nav>
         <form action="{{ route('teams.store') }}" method="POST" class="space-y-6">
             @csrf
 
