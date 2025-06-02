@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TournamentController;
+use App\Models\Tournament;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/teams', [TeamController::class, 'index'])->name('teams.index');
+Route::get('/tournaments', [TournamentController::class, 'index'])->name('tournaments.index');
 
 Route::get('/', function () {
     return view('dashboard');
@@ -29,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::resource('teams', TeamController::class);
+Route::resource('tournaments', TournamentController::class);
 
 
 require __DIR__.'/auth.php';
