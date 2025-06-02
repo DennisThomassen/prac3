@@ -3,7 +3,7 @@
 @section('content')
 <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-white shadow rounded-lg p-6">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">Team Toevoegen</h2>
+        <h2 class="text-2xl font-bold mb-6 text-gray-800">Tournament  Creëren</h2>
 
         <form action="{{ route('tournaments.store') }}" method="POST" class="space-y-6">
             @csrf
@@ -47,7 +47,7 @@
             <div>
                 <button type="submit"
                     class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                    Team toevoegen
+                    Goedkeuren
                 </button>
             </div>
         </form>

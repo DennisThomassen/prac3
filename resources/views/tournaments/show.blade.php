@@ -9,30 +9,34 @@
         <p><strong>Prijzengeld:</strong> €{{ $tournament->prize_amount }}</p>
     </div>
 
-    {{-- Bracket visualisatie --}}
-    <div class="overflow-x-auto bg-gray-100 rounded-lg p-6">
-        <h3 class="text-xl font-semibold mb-6">Toernooi Schema</h3>
-        <div class="flex space-x-16">
-            {{-- Round 1 --}}
-            <div class="flex flex-col space-y-16">
-                <div class="relative">
-                    <div class="bg-white p-4 rounded shadow text-center">Team A</div>
-                    <div class="absolute right-0 top-1/2 w-8 h-0.5 bg-gray-500 transform translate-x-full"></div>
-                </div>
-                <div class="relative">
-                    <div class="bg-white p-4 rounded shadow text-center">Team B</div>
-                    <div class="absolute right-0 top-1/2 w-8 h-0.5 bg-gray-500 transform translate-x-full"></div>
-                </div>
+   <div class="mt-12">
+    <h3 class="text-xl font-semibold mb-6">Toernooi Schema</h3>
+    <div class="flex justify-center gap-16 relative">
+        <!-- Ronde 1 -->
+        <div class="flex flex-col gap-20 relative">
+            <div class="relative flex items-center justify-center w-32 h-12 bg-white shadow rounded">
+                <span>Team A</span>
+                <div class="absolute right-[-2rem] top-1/2 h-0.5 w-8 bg-gray-400"></div>
             </div>
+            <div class="relative flex items-center justify-center w-32 h-12 bg-white shadow rounded">
+                <span>Team B</span>
+                <div class="absolute right-[-2rem] top-1/2 h-0.5 w-8 bg-gray-400"></div>
+            </div>
+        </div>
 
-            {{-- Round 2 --}}
-            <div class="flex flex-col justify-center space-y-16 relative">
-                <div class="relative">
-                    <div class="bg-white p-4 rounded shadow text-center">Winner 1</div>
+        <!-- Ronde 2 -->
+        <div class="flex flex-col justify-center gap-20 relative">
+            <div class="relative flex items-center justify-center w-32 h-12 bg-white shadow rounded">
+                <span>Winner 1</span>
+                <div class="absolute right-[-2rem] top-1/2 h-0.5 w-8 bg-gray-400"></div>
+                <div class="absolute left-[-2rem] top-[-5rem] h-40 w-0.5 bg-gray-400"></div>
+            </div>
+        </div>
 
-                    <div class="absolute left-0 top-0 h-full w-0.5 bg-gray-500 transform -translate-x-1/2"></div>
-                    <div class="absolute left-0 top-1/2 w-8 h-0.5 bg-gray-500 transform -translate-x-full"></div>
-                </div>
+        <!-- Finale -->
+        <div class="flex flex-col justify-center">
+            <div class="flex items-center justify-center w-32 h-12 bg-white shadow rounded">
+                <span>Champion</span>
             </div>
         </div>
     </div>

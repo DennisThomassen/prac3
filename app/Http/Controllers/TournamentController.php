@@ -24,7 +24,7 @@ class TournamentController extends Controller
             'name' => 'required|string',
             'rounds' => 'required|integer',
             'teams_competing' => 'required|string',
-            'prize_amount' => 'required|decimal',
+            'prize_amount' => 'required|numeric',
         ]);
         $tournament = new Tournament;
         $tournament->name = $request->input('name');
