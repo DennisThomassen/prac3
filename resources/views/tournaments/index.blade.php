@@ -3,6 +3,9 @@
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="bg-white shadow rounded-lg p-6">
+        <a href="{{ route('tournaments.create') }}" class="p-3 text-gray-900 bg-gray-100 rounded hover:bg-gray-200">
+                Tournament Toevoegen
+            </a>
         <h2 class="text-2xl font-bold mb-4">Tournament Overzicht</h2>
         <table class="min-w-full table-auto border-collapse text-left">
             <thead class="bg-gray-100">
