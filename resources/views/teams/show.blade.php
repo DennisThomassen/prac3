@@ -3,9 +3,9 @@
 @section('content')
 
 <h1>Team</h1>
-<p>Team Naam: {{ $anime->name}}</p>
-<p>Aantal Speler: {{ $anime->player_count}}</p>
-<p>Coach Name: {{ $anime->coach_name}}</p>
+<p>Team Naam: {{ $team->name}}</p>
+<p>Aantal Speler: {{ $team->player_count}}</p>
+<p>Coach Name: {{ $team->coach_name}}</p>
 
 
 @endsection

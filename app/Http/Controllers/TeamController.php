@@ -3,17 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\team;
+use App\Models\Team;
 
 class TeamController extends Controller
 {
     public function index(){
         $teams = Team::all();
-        return view('teams.index')->compact('team');
+        return view('teams.index', compact('teams'));
     }
-    public function edit(){
+    public function edit($id){
+        $team = Team::findOrFail($id);
+        return view('teams.edit', compact('team'));
+    }
+    public function create(){
         $teams = Team::all();
-        return view('teams.create', compact('team'));
+        return view('teams.create', compact('teams'));
     }
     public function store(Request $request){
         $this -> validate($request, [
@@ -30,10 +34,8 @@ class TeamController extends Controller
 
         return redirect()->route('teams.index');
     }
-    public function create($id){
-        $team = Team::findOrFail($id);
-        return view('teams.edit', compact('team'));
-    }
+
+
     public function update(Request $request, string $id){
         $team = Team::findOrFail($id);
         $team->name = $request->get('name');
