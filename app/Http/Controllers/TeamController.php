@@ -1,5 +1,6 @@
 <?php
 
+ // kut thomas
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
