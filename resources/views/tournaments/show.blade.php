@@ -9,21 +9,31 @@
         <p><strong>Prijzengeld:</strong> €{{ $tournament->prize_amount }}</p>
     </div>
 
-   <div class="mt-12">
-    <h3 class="text-xl font-semibold mb-6">Toernooi Schema</h3>
-    <div class="flex justify-center gap-16 relative">
-        @foreach ($rounds as $roundIndex => $matches)
-            <div class="flex flex-col gap-20 relative">
-                @foreach ($matches as $match)
-                    <div class="relative flex items-center justify-center w-32 h-12 bg-white shadow rounded">
-                        <span>{{ $match['team_name'] }}</span>
-                        @if (!$loop->last)
-                            <div class="absolute right-[-2rem] top-1/2 h-0.5 w-8 bg-gray-400"></div>
-                        @endif
-                    </div>
-                @endforeach
+    <div class="mt-12">
+        <h3 class="text-xl font-semibold mb-6">Toernooi Schema</h3>
+
+        <div class="flex flex-col items-center space-y-8">
+            <div class="flex justify-between w-full max-w-4xl">
+                <!-- Ronde 1 -->
+                <div class="space-y-4">
+                    <div class="bg-white shadow p-2 rounded w-32 text-center">Team A</div>
+                    <div class="bg-white shadow p-2 rounded w-32 text-center">Team B</div>
+                    <div class="bg-white shadow p-2 rounded w-32 text-center">Team C</div>
+                    <div class="bg-white shadow p-2 rounded w-32 text-center">Team D</div>
+                </div>
+
+                <!-- Ronde 2 -->
+                <div class="space-y-8 pt-6">
+                    <div class="bg-white shadow p-2 rounded w-32 text-center">Team A</div>
+                    <div class="bg-white shadow p-2 rounded w-32 text-center">Team C</div>
+                </div>
+
+                <!-- Finale -->
+                <div class="space-y-16 pt-16">
+                    <div class="bg-green-100 shadow p-2 rounded w-32 text-center font-bold">Winnaar: Team A</div>
+                </div>
             </div>
-        @endforeach
+        </div>
     </div>
 </div>
 @endsection
