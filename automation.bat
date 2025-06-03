@@ -1,12 +1,16 @@
 @echo off
-echo 🚀 Starting Laravel and Vite...
+echo
+ Starting Vite...
 
-REM Start Laravel backend in a new window
-start "Laravel Server" cmd /k "php artisan serve"
+:: Start Laravel backend in a new window
 
-REM Add a small delay before starting Vite
-timeout /t 2 >nul
 
-REM Start Vite frontend in the current window
-echo 🎨 Starting Vite frontend...
+:: Add a small delay before starting Vite
+timeout /t 1 >nul
+
+:: Start Vite frontend in the current window
+echo  Starting Vite frontend...
 npm run dev
+
+
+:: geschreven door onze handige Lucas
