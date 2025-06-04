@@ -32,6 +32,24 @@ Route::post('/login', function (Request $request) {
     ]);
 });
 
+// AUTH
+Route::post('/register', [AuthController::class, 'register']);
+
+// TOURNAMENTS & MATCHES
+Route::get('/tournaments', [TournamentController::class, 'index']);
+Route::get('/tournaments/{id}', [TournamentController::class, 'show']); // inclusief teams & matches
+Route::get('/matches/{id}', [MatchController::class, 'show']);
+
+// BETS
+Route::post('/bets', [BetController::class, 'store']);
+Route::get('/bets/user', [BetController::class, 'userBets']); // authenticated
+
+// MODERATOR ACTIONS
+Route::middleware('role:gamblingModerator')->group(function () {
+    Route::post('/matches/{id}/result', [MatchController::class, 'submitResult']);
+});
+
+
 /*
 |--------------------------------------------------------------------------
 | Authenticated: gebruiker ophalen
