@@ -85,32 +85,4 @@ Route::middleware('auth:sanctum')->group(function () {
         return response()->json(null, 204);
     });
 
-<<<<<<< HEAD
-=======
-// AUTH
-Route::post('/register', [AuthController::class, 'register']);
-
-// TOURNAMENTS & MATCHES
-Route::get('/tournaments', [TournamentController::class, 'index']);
-Route::get('/tournaments/{id}', [TournamentController::class, 'show']); // inclusief teams & matches
-Route::get('/matches/{id}', [MatchController::class, 'show']);
-
-// BETS
-Route::post('/bets', [BetController::class, 'store']);
-Route::get('/bets/user', [BetController::class, 'userBets']); // authenticated
-
-// MODERATOR ACTIONS
-Route::middleware('role:gamblingModerator')->group(function () {
-    Route::post('/matches/{id}/result', [MatchController::class, 'submitResult']);
-});
-
-
-/*
-|--------------------------------------------------------------------------
-| Authenticated: gebruiker ophalen
-|--------------------------------------------------------------------------
-*/
-Route::middleware('auth:sanctum')->get('/me', function (Request $request) {
-    return $request->user();
->>>>>>> f947eabbc5cbaebf1f8f6b15f721f5bf7a3d2b2b
 });
