@@ -1,3 +1,5 @@
+<?php
+
 use App\Models\Team;
 use App\Models\Tournament;
 use Illuminate\Http\Request;
@@ -84,5 +86,6 @@ Route::middleware('auth:sanctum')->group(function () {
         $team->delete();
         return response()->json(null, 204);
     });
+    Route::post('/register', [AuthController::class, 'register']);
 
 });
