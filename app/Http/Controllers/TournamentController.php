@@ -59,30 +59,30 @@ class TournamentController extends Controller
         Tournament::findOrFail($id)->delete();
         return redirect()->route('tournaments.index');
     }
-   public function show($id)
-{
-    $tournament = Tournament::findOrFail($id);
+    public function show($id)
+    {
+        $tournament = Tournament::findOrFail($id);
 
-    $teams = $tournament->teams; // Dit moet een relatie zijn in je Tournament model!
+        $teams = $tournament->teams; // Dit moet een relatie zijn in je Tournament model!
 
-    $rounds = [];
-    $currentRound = $teams->map(function ($team) {
-        return ['team_name' => $team->name];
-    });
+        $rounds = [];
+        $currentRound = $teams->map(function ($team) {
+            return ['team_name' => $team->name];
+        });
 
-    while ($currentRound->count() > 1) {
-        $rounds[] = $currentRound;
-        $nextRound = collect();
+        while ($currentRound->count() > 1) {
+            $rounds[] = $currentRound;
+            $nextRound = collect();
 
-        for ($i = 0; $i < $currentRound->count(); $i += 2) {
-            $nextRound->push(['team_name' => 'Winner of ' . $currentRound[$i]['team_name'] . ' vs ' . $currentRound[$i + 1]['team_name']]);
+            for ($i = 0; $i < $currentRound->count(); $i += 2) {
+                $nextRound->push(['team_name' => 'Winner of ' . $currentRound[$i]['team_name'] . ' vs ' . $currentRound[$i + 1]['team_name']]);
+            }
+
+            $currentRound = $nextRound;
         }
 
-        $currentRound = $nextRound;
+        $rounds[] = $currentRound;
+
+        return view('tournaments.show', compact('tournament', 'rounds'));
     }
-
-    $rounds[] = $currentRound;
-
-    return view('tournaments.show', compact('tournament', 'rounds'));
-}
 }
